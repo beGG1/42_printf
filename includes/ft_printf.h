@@ -30,6 +30,10 @@ typedef struct s_format
 	char	type;
 }	t_format;
 
-int	ft_printf(const char *str, ...);
+int			ft_printf(const char *str, ...);
+t_format	*init_format(void);
+int			reset_format(t_format *f);
+int			fill_format(const char *str, t_format *f);
+int			print_format(t_format *f, va_list args);
 
 #endif

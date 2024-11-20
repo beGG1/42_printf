@@ -2,5 +2,6 @@
 # include <stdio.h>
 
 int main() {
-    printf("|%l|\n", 42);
+    ft_printf("abcdefg%cd\n", 's');
+    printf("abcdefg%cd\n", 's');
 }
