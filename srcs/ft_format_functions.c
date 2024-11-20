@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_format_functions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 02:16:53 by sshabali          #+#    #+#             */
-/*   Updated: 2024/11/20 02:16:56 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/20 20:25:21 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/20 20:31:09 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../includes/ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-
-typedef struct s_format
+t_format	*init_format()
 {
-	int		minus;
-	int		plus;
-	int		space;
-	int		zero;
-	int		hash;
-	int		dot;
-	int		width;
-	int		perc;
-	char	type;
-}	t_format;
+	t_format	*f;
 
-int	ft_printf(const char *str, ...);
+	f = (t_format *)malloc(sizeof(f));
+	if (!f)
+		return (NULL);
+	f->dot = 0;
+	f->hash = 0;
+	f->perc = 0;
+	f->plus = 0;
+	f->type = 0;
+	f->zero = 0;
+	f->minus = 0;
+	f->space = 0;
+	f->width = 0;
+	return (f);
+}
 
-#endif

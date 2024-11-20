@@ -1,5 +1,6 @@
 # include "includes/ft_printf.h"
+# include <stdio.h>
 
 int main() {
-    ft_printf("avc");
+    printf("|%l|\n", 42);
 }

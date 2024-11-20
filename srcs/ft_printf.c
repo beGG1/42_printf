@@ -12,7 +12,7 @@
 
 # include "../includes/ft_printf.h"
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char *str, ...)
 {
 	write(1, "abc", 3);
 }
