@@ -2,6 +2,6 @@
 # include <stdio.h>
 
 int main() {
-    ft_printf("abcdefg%cd\n", 's');
-    printf("abcdefg%cd\n", 's');
+    ft_printf("%X\n", 12233);
+    printf("%X\n", 12233);
 }

@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:25:21 by sshabali          #+#    #+#             */
-/*   Updated: 2024/11/20 20:31:09 by sshabali         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:39:52 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,22 @@ int	reset_format(t_format *f)
 	return (1);
 }
 
+static int	type_flag(char c)
+{
+	char	*flags;
+	int		i;
+
+	flags = "i%cdxX";
+	i = 0;
+	while (flags[i])
+	{
+		if (flags[i] == c)
+			return (c);
+		i++;
+	}
+	return (-1);
+}
+
 int	fill_format(const char *str, t_format *f)
 {
 	size_t	i;
@@ -54,20 +70,10 @@ int	fill_format(const char *str, t_format *f)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == 'd')
+		if (type_flag(str[i]) >= 0)
 		{
-			f->type = 'd';
-			break;
-		}
-		if (str[i] == '%')
-		{
-			f->type = '%';
-			break;
-		}
-		if (str[i] == 'c')
-		{
-			f->type = 'c';
-			break;
+			f->type = str[i];
+			break ;
 		}
 		i++;
 	}
@@ -83,4 +89,11 @@ int	print_format(t_format *f, va_list args)
 		return (write(1, &arg, 1));
 	if (f->type == '%')
 		return (write(1, "%", 1));
+	if (f->type == 'i' || f->type == 'd')
+		return (ft_putnbr_base(arg, "0123456789"));
+	if (f->type == 'x')
+		return (ft_putnbr_base(arg, "0123456789abcdef"));
+	if (f->type == 'X')
+		return (ft_putnbr_base(arg, "0123456789ABCDEF"));
+	return (-1);
 }
