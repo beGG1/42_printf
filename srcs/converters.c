@@ -1,26 +1,68 @@
 #include "../includes/ft_printf.h"
 
-int	ft_atoi(const char *nptr)
+int	len_hex(unsigned long long n)
 {
-	int	sign;
-	int	result;
-	int	i;
+	int	len;
 
-	i = 0;
-	sign = 1;
-	result = 0;
-	while ((nptr[i] <= 13 && nptr[i] >= 9) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n)
 	{
-		if (nptr[i] == '-')
-			sign = -1;
-		i++;
+		len++;
+		n /= 16;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	return (len);
+}
+
+char* int_to_hex(int num, char a)
+{
+	unsigned int	n;
+	int				max_digits;
+    char			*hex ;
+	int				digit;
+	
+	n = (unsigned int)num;
+	max_digits = len_hex(n);
+	hex = malloc(max_digits + 1);
+    if (!hex)
+        return (NULL);
+    hex[max_digits] = '\0';
+    while (max_digits > 0)
 	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
+		max_digits--;
+		digit = n % 16;
+		if (digit < 10)
+			hex[max_digits] = (digit) + '0';
+		else
+			hex[max_digits] = (digit % 10) + a;
+		n /= 16;
 	}
-	return (sign * result);
+	return (hex);
+}
+
+char* ulong_to_hex(unsigned long num, char a)
+{
+	unsigned long	n;
+	int				max_digits;
+    char			*hex ;
+	int				digit;
+	
+	n = (unsigned long)num;
+	max_digits = len_hex(n);
+	hex = malloc(max_digits + 1);
+    if (!hex)
+        return (NULL);
+    hex[max_digits] = '\0';
+    while (max_digits > 0)
+	{
+		max_digits--;
+		digit = n % 16;
+		if (digit < 10)
+			hex[max_digits] = (digit) + '0';
+		else
+			hex[max_digits] = (digit % 10) + a;
+		n /= 16;
+	}
+	return (hex);
 }

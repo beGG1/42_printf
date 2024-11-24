@@ -3,7 +3,8 @@ SRCS = 	srcs/converters.c \
 		srcs/print_format.c \
 		srcs/string_functions.c \
 		srcs/utils.c \
-		srcs/number_functions.c
+		srcs/number_functions.c \
+		srcs/ptr_functions.c
 
 
 INCLUDES			= includes/ft_printf.h
