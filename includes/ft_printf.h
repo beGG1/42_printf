@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 
+#include <stdio.h>
+
 typedef struct s_format
 {
 	int		minus;
@@ -34,9 +36,10 @@ int			ft_printf(const char *str, ...);
 t_format	*init_format(void);
 int			reset_format(t_format *f);
 int			fill_format(const char *str, t_format *f);
-int			print_format(t_format *f, va_list args);
-int			ft_str_len(char *str);
-int			ft_putstr(char *str);
-int			ft_putnbr_base(int i, char *base);
+int			in_set(char c, char *set);
+int			ft_atoi(const char *nptr);
+int			print_format(t_format *t, va_list args);
+int 		print_string(char *str, t_format *f);
+int 		print_char(int c, t_format *f);
 
 #endif
