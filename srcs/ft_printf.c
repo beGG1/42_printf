@@ -16,51 +16,41 @@
 static int	ft_print(const char *str, va_list args)
 {
 	int			i;
-	t_format	*f;
-	int			a;
 	int			out;
 	int			temp;
+	int			pr;
 
 	i = 0;
-	f = init_format();
 	out = 0;
+	pr = 1;
 	while (str[i])
 	{
+		temp = 0;
 		if (str[i] != '%')
 		{
-			if (write(1, &str[i], 1) < 1)
-				return (-1);
+			if (pr)
+			{
+				if (write(1, &str[i], 1) < 1)
+					return (-1);
+			}
 			out += 1;
 		}
 		else
 		{
-			a = fill_format(&str[++i], f);
-			if (a < 0)
+			if (in_set(str[i + 1], "idscupxX%%"))
+				temp = print_format(str[i + 1], args, pr);
+			if (temp < 0)
 			{
-				reset_format(f);
-				if (write(1, "%", 1) < 1)
-				{
-					free(f);
+				if (str[i + 1] != 'c')
 					return (-1);
-				}
-				i--;
+				pr = 0;
+				out += 2;
 			}
-			else
-			{
-				temp = print_format(f, args);
-				if (temp < 0)
-				{
-					free(f);
-					return (-1);
-				}
-				out += temp;
-				i += a;
-				reset_format(f);
-			}
+			out += temp;
+			i++;
 		}
 		i++;
 	}
-	free(f);
 	return (out);
 }
 

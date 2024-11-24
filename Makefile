@@ -1,9 +1,9 @@
 SRCS = 	srcs/converters.c \
-		srcs/format_functions.c \
 		srcs/ft_printf.c \
-		srcs/printing_format.c \
+		srcs/print_format.c \
 		srcs/string_functions.c \
-		srcs/utils.c
+		srcs/utils.c \
+		srcs/number_functions.c
 
 
 INCLUDES			= includes/ft_printf.h

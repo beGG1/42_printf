@@ -2,6 +2,6 @@
 # include <stdio.h>
 
 int main() {
-    ft_printf("%c", '0');
-    printf("%c", '0');
+    ft_printf("%u\n", 0);
+    printf("%u\n", 0);
 }

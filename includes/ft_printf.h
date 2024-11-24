@@ -17,29 +17,15 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-#include <stdio.h>
-
-typedef struct s_format
-{
-	int		minus;
-	int		plus;
-	int		space;
-	int		zero;
-	int		hash;
-	int		dot;
-	int		width;
-	int		perc;
-	char	type;
-}	t_format;
-
-int			ft_printf(const char *str, ...);
-t_format	*init_format(void);
-int			reset_format(t_format *f);
-int			fill_format(const char *str, t_format *f);
-int			in_set(char c, char *set);
-int			ft_atoi(const char *nptr);
-int			print_format(t_format *t, va_list args);
-int 		print_string(char *str, t_format *f);
-int 		print_char(int c, t_format *f);
+int	ft_printf(const char *str, ...);
+int	in_set(char c, char *set);
+int	print_string(char *str);
+int	print_char(int c);
+int	print_format(char c, va_list args, int pr);
+int	str_len(char *str);
+int	print_int(int n);
+int	ft_numlen(int n);
+int	ft_unumlen(unsigned int n);
+int	print_uint(unsigned int n);
 
 #endif

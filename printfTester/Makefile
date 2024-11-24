@@ -28,12 +28,12 @@ $(MANDATORY): %: mandatory_start
 $(BONUS): %: bonus_start
 	@$(CC) $(CFLAGS) -gdwarf-4 -D TIMEOUT_US=$(TIMEOUT_US) $(UTILS) $(TESTS_PATH)$*_test.cpp -L.. -lftprintf -o $*_test && $(VALGRIND) ./$*_test $(TEST_NUMBER) && rm -f $*_test
 
-mandatory_start: update checkmakefile
+mandatory_start: checkmakefile
 	@tput setaf 6
 	@make -C ..
 	@tput setaf 4 && echo [Mandatory]
 
-bonus_start: update checkmakefile
+bonus_start: checkmakefile
 	@tput setaf 6
 	@make bonus -C ..
 	@tput setaf 5 && echo [Bonus]
