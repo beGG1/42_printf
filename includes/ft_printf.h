@@ -27,10 +27,10 @@ int		print_int(int n);
 int		ft_numlen(int n);
 int		ft_unumlen(unsigned int n);
 int		print_uint(unsigned int n);
-char*	int_to_hex(int num, char a);
+char	*int_to_hex(int num, char a);
 int		len_hex(unsigned long long n);
 int		print_hex(int n, char a);
-int		print_address(void* ptr);
-char*	ulong_to_hex(unsigned long num, char a);
+int		print_address(void *ptr);
+char	*ulong_to_hex(unsigned long num, char a);
 
 #endif
