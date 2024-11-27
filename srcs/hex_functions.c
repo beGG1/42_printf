@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   number_functions.c                                 :+:      :+:    :+:   */
+/*   hex_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 01:32:28 by sshabali          #+#    #+#             */
-/*   Updated: 2024/11/28 01:32:30 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/28 01:32:14 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/28 01:32:16 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_numlen(int n)
+int	len_hex(unsigned long long n)
 {
 	int	len;
 
-	if (n <= 0)
-		len = 1;
-	else
-		len = 0;
-	while (n != 0)
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n)
 	{
 		len++;
-		n /= 10;
+		n /= 16;
 	}
 	return (len);
 }
 
-static int	print_int(int n)
+static int	print_hex(int n, char a)
 {
 	char	*nbr;
 	int		temp;
 
-	nbr = ft_itoa(n);
+	nbr = int_to_hex(n, a);
 	if (!nbr)
 		return (-1);
 	temp = print_string(nbr);
@@ -41,9 +40,9 @@ static int	print_int(int n)
 	return (temp);
 }
 
-int	print_int_arg(int n, int pr)
+int	print_hex_arg(int n, char c, int pr)
 {
 	if (pr)
-		return (print_int(n));
-	return (ft_numlen(n));
+		return (print_hex(n, c));
+	return (len_hex((unsigned int)n));
 }

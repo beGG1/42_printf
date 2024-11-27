@@ -18,22 +18,22 @@
 # include <stdarg.h>
 
 int		ft_printf(const char *str, ...);
-int		in_set(char c, char *set);
-int		print_string(char *str);
-int		print_char(int c);
-int		print_format(char c, va_list args, int pr);
-int		str_len(char *str);
-int		print_int(int n);
-int		ft_numlen(int n);
-int		ft_unumlen(unsigned int n);
-int		print_uint(unsigned int n);
 char	*int_to_hex(int num, char a);
-int		len_hex(unsigned long long n);
-int		print_hex(int n, char a);
-int		print_address(void *ptr);
 char	*ulong_to_hex(unsigned long num, char a);
-int		print_str_arg(char *str, int pr);
 char	*ft_utoa(unsigned int n);
 char	*ft_itoa(int n);
+int		in_set(char c, char *set);
+int		print_format(char c, va_list args, int pr);
+int		len_hex(unsigned long long n);
+int		print_hex_arg(int n, char c, int pr);
+int		ft_numlen(int n);
+int		print_int_arg(int n, int pr);
+int		print_ptr_arg(void *ptr, int pr);
+int		str_len(char *str);
+int		print_string(char *str);
+int		print_char(int c);
+int		print_str_arg(char *str, int pr);
+int		ft_unumlen(unsigned int n);
+int		print_uint_arg(int n, int pr);
 
 #endif

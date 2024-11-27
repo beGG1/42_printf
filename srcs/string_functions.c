@@ -49,5 +49,5 @@ int	print_str_arg(char *str, int pr)
 {
 	if (pr)
 		return (print_string(str));
-	return str_len(str);
+	return (str_len(str));
 }

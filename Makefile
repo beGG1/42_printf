@@ -1,11 +1,12 @@
 SRCS = 	srcs/converters.c \
 		srcs/ft_printf.c \
-		srcs/print_format.c \
-		srcs/string_functions.c \
-		srcs/utils.c \
+		srcs/hex_functions.c \
 		srcs/number_functions.c \
-		srcs/ptr_functions.c
-
+		srcs/print_format.c \
+		srcs/ptr_functions.c \
+		srcs/string_functions.c \
+		srcs/unumber_functions.c \
+		srcs/utils.c
 
 INCLUDES			= includes/ft_printf.h
 
@@ -37,4 +38,4 @@ fclean:				clean
 
 re:					fclean all
 
-.PHONY:				all bonus clean fclean re
+.PHONY:				all clean fclean re

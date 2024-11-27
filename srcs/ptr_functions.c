@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-int	print_address(void	*ptr)
+static int	print_address(void	*ptr)
 {
 	char	*addr;
 	char	buffer[18];
@@ -29,4 +29,17 @@ int	print_address(void	*ptr)
 	buffer[pos] = '\0';
 	free(addr);
 	return (print_string(buffer));
+}
+
+int	print_ptr_arg(void *ptr, int pr)
+{
+	if (ptr == NULL)
+	{
+		if (pr)
+			return (print_string("(nil)"));
+		return (str_len("(nil)"));
+	}
+	if (pr)
+		return (print_address(ptr));
+	return (17);
 }

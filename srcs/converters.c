@@ -85,10 +85,10 @@ char	*ft_utoa(unsigned int n)
 
 char	*ft_itoa(int n)
 {
-	long		num;
-	char		*str;
-	int		    len;
-	int		    i;
+	long	num;
+	char	*str;
+	int		len;
+	int		i;
 
 	len = ft_numlen(n);
 	num = n;
