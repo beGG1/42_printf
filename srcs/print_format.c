@@ -9,12 +9,7 @@ int print_format(char c, va_list args, int pr)
     if (c == 'c' && pr)
         return (print_char(va_arg(args, int)));
     if (c == 's')
-    {
-        str = va_arg(args, char *);
-        if (pr)
-            return (print_string(str));
-        return str_len(str);
-    }
+		print_str_arg(va_arg(args, char *), pr);
     if (c == '%' && pr)
         return (write(1, "%", 1));
     if (c == 'i' || c == 'd')

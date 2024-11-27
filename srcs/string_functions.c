@@ -44,3 +44,10 @@ int	print_char(int c)
 		return (-1);
 	return (write(1, &ch, 1));
 }
+
+int	print_str_arg(char *str, int pr)
+{
+	if (pr)
+		return (print_string(str));
+	return str_len(str);
+}

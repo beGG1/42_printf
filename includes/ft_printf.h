@@ -32,5 +32,8 @@ int		len_hex(unsigned long long n);
 int		print_hex(int n, char a);
 int		print_address(void *ptr);
 char	*ulong_to_hex(unsigned long num, char a);
+int		print_str_arg(char *str, int pr);
+char	*ft_utoa(unsigned int n);
+char	*ft_itoa(int n);
 
 #endif

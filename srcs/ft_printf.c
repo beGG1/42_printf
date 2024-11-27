@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
-
+#include "../includes/ft_printf.h"
 
 static int	ft_print(const char *str, va_list args)
 {

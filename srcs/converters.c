@@ -12,21 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-int	len_hex(unsigned long long n)
-{
-	int	len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n)
-	{
-		len++;
-		n /= 16;
-	}
-	return (len);
-}
-
 char	*int_to_hex(int num, char a)
 {
 	unsigned int	n;
@@ -77,4 +62,52 @@ char	*ulong_to_hex(unsigned long num, char a)
 		n /= 16;
 	}
 	return (hex);
+}
+
+char	*ft_utoa(unsigned int n)
+{
+	char		*str;
+	int			len;
+
+	len = ft_unumlen(n);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	str[len] = '\0';
+	while (len > 0)
+	{
+		len--;
+		str[len] = (n % 10) + '0';
+		n /= 10;
+	}
+	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	long		num;
+	char		*str;
+	int		    len;
+	int		    i;
+
+	len = ft_numlen(n);
+	num = n;
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	if (n < 0)
+	{
+		str[i] = '-';
+		i++;
+		num = -num;
+	}
+	str[len] = '\0';
+	while (len > i)
+	{
+		len--;
+		str[len] = (num % 10) + '0';
+		num /= 10;
+	}
+	return (str);
 }
