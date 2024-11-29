@@ -40,8 +40,6 @@ int	print_char(int c)
 	unsigned char	ch;
 
 	ch = c;
-	if (ch > 127 || ch < 32)
-		return (-1);
 	return (write(1, &ch, 1));
 }
 
